@@ -14,6 +14,8 @@ CREATE EXTENSION file_fdw;
 ### 2. Criar um wrapper para ler o CSV:
 
 ```
+CREATE SERVER pglog FOREIGN DATA WRAPPER file_fdw;
+
 CREATE FOREIGN TABLE postgres_log_file (
     log_time TEXT,
     user_name TEXT,
