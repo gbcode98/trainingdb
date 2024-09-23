@@ -41,7 +41,7 @@ CREATE FOREIGN TABLE postgres_log_file (
     location TEXT,
     application_name TEXT
 )
-SERVER file_server
+SERVER pglog
 OPTIONS (filename '/caminho/para/os/logs/postgresql.log', format 'csv');
 ```
 
