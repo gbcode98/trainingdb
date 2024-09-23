@@ -53,3 +53,6 @@ SELECT * FROM postgres_log_file;
 
 
 ### Essa abordagem permite automatizar a inserção dos logs diretamente a partir dos arquivos de log gerados pelo PostgreSQL.
+
+
+https://www.postgresql.org/docs/current/file-fdw.html
