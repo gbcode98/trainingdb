@@ -7,7 +7,22 @@
 ### 1. Instalar a extensão:
 
 ```
+log_line_prefix = '%t [%p] user=%u, db=%d, client=%h, sess_id=%c, line=%l, cmd_tag=%i, sess_start=%s, vxid=%v, txid=%x, app=%a, location=%r, severity=%p'
+
+
+# Habilitar logs de consultas lentas e erros detalhados
+log_statement = 'all'               # Registrar todas as consultas
+log_duration = on                   # Registrar a duração de cada consulta
+log_error_verbosity = 'verbose'     # Incluir detalhes adicionais no log de erros
+log_min_error_statement = 'error'   # Registrar a consulta SQL em caso de erro
+log_min_messages = 'info'           # Registrar todas as mensagens de INFO para cima (INFO, WARNING, ERROR)
+
+# Adiciona detalhes específicos às mensagens de erro
+log_executor_stats = on             # Incluir estatísticas do executor nas mensagens de erro
+
+
 CREATE EXTENSION file_fdw;
+
 ```
 
 
