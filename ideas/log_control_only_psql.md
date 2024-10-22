@@ -73,3 +73,40 @@ SELECT * FROM postgres_log_file;
 
 
 https://www.postgresql.org/docs/current/file-fdw.html
+
+
+
+
+drop FOREIGN TABLE if exists psql_log_monday;
+CREATE FOREIGN TABLE psql_log_monday (
+    log_time TEXT,
+    user_name TEXT,
+    database_name TEXT,
+    process_id INT,
+    connection_from TEXT,
+    session_id TEXT,
+    session_line_num BIGINT,
+    command_tag TEXT,
+    session_start_time TEXT,
+    virtual_transaction_id TEXT,
+    transaction_id BIGINT,
+    error_severity TEXT,
+    sql_state_code TEXT,
+    message TEXT,
+    detail TEXT,
+    hint TEXT,
+    internal_query TEXT,
+    internal_query_pos INT,
+    context TEXT,
+    query TEXT,
+    query_pos INT,
+    location TEXT,
+    application_name TEXT,
+    colum1 text
+)
+SERVER pglog
+options (filename '/var/lib/postgresql/13/main/pg_log/postgresql-Mon.csv', format 'csv', delimiter ',');
+
+alter foreign table psql_log_monday owner to radarsaude_write;
+grant select on table psql_log_monday to radarsaude_read;
+
